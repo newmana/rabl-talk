@@ -3,37 +3,13 @@ rabl-talk
 
 RABL talk for Brisbane Ruby Group
 
-http://railscasts.com/episodes/322-rabl
-
 Example
+=======
+User.create(:first_name => "Seamas", :last_name => "Magoon-Archer", :age => 0)
+u = User.create(:first_name => "Zaphod", :last_name => "Smith", :age => 32))
+Post.create(:title => "Really something", :body => "Like you know", :user_id => u.id)
 
-Controller
-...
-         render :json => foo.new_result
-
-..
- def new_result
-    result = {
-        "name" => self.source.name,
-        "attributes" => self.display_attributes
-    }
-    return {
-        "result" => result,
-        "foo" => self.bar,
-    }
-  end
-
-  def as_json(options={ })
-    {
-        :id => self.id,
-        :foo => {
-            :bar => self.bar,
-        },
-        :archived => self.archived,
-        :user => {
-            :first_name => self.user.first_name,
-            :last_name => self.user.last_name,
-        }
-    }
-  end
-
+Links
+=====
+http://railscasts.com/episodes/322-rabl
+http://engineering.gomiso.com/2011/06/27/building-a-platform-api-on-rails/

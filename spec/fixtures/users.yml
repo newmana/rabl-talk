@@ -1,0 +1,11 @@
+seamus:
+  id: 1
+  first_name: Seamus
+  last_name: Magoon Archer
+  age: 0
+
+zaphod:
+  id: 2
+  first_name: Sterling
+  last_name: Archer
+  age: 35

@@ -1,33 +1,24 @@
-%w(rubygems sinatra rabl active_record rgeo active_support/core_ext active_support/inflector builder).each do |lib|
-  require lib
-end
+# This file is copied to spec/ when you run 'rails generate rspec:install'
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__)
+require 'rspec/rails'
+require 'rspec/autorun'
 
-Rabl.register!
-
-Sinatra::Application.configure do
-  set :views, File.join(File.dirname(__FILE__), '../views')
-end
-
-ENV['ENV'] = Sinatra::Application.environment.to_s
-
-require File.join(File.dirname(__FILE__), '../lib', 'database.rb')
-require File.join(File.dirname(__FILE__), '../lib', 'models.rb')
-
-require File.join(File.dirname(__FILE__), '..', 'app.rb')
-
-require 'sinatra'
-require 'rack/test'
-
-# setup test environment
-set :environment, :test
-set :run, false
-set :raise_errors, true
-set :logging, false
-
-def app
-  Sinatra::Application
-end
+# Requires supporting ruby files with custom matchers and macros, etc,
+# in spec/support/ and its subdirectories.
+Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
-  config.include Rack::Test::Methods
+  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+
+  # If you're not using ActiveRecord, or you'd prefer not to run each of your
+  # examples within a transaction, remove the following line or assign false
+  # instead of true.
+  config.use_transactional_fixtures = true
+
+  # If true, the base class of anonymous controllers will be inferred
+  # automatically. This will be the default behavior in future versions of
+  # rspec-rails.
+  config.infer_base_class_for_anonymous_controllers = false
 end
